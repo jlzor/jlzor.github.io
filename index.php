@@ -67,7 +67,7 @@
  <div class="jumbotron">
   <h1>Hola Desconocido! Yo soy Jose Luis!</h1>
   <p>Me dedico a eso de la programación! Me destaco trabajando en soporte técnico y en aplicaciones/paginas web. Tengo experiencia en lenguajes como PHP, Python y Javascript entre muchos otros. También soy hábil estructurando y consultando bases de datos.</p>
-  <p align="right"><a class="btn btn-primary btn-lg text-">Seguir Leyendo...</a></p>
+  <p align="right"><a class="btn btn-primary btn-lg text-" href="main.php?opc=1">Seguir Leyendo...</a></p>
 </div>
 			</article>
 	</section>
