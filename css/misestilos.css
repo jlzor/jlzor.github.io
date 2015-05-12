@@ -1,0 +1,52 @@
+header {
+  	background: #b51b16;
+  	color: #fff;
+
+}
+
+
+.margen{
+	padding-top: 5;
+
+}
+
+.barra2{
+	background: #626262;
+}
+
+.barra{
+	background: #202020;
+}
+
+
+.main{
+	background: #f2f2f2;
+
+}
+
+.color1 {
+	background: #d6c9af;
+	color: #404040;
+
+}
+
+.color2 {
+	background: #fbfae3;
+	color: #404040;
+}
+
+.color5{
+	background: #901511;
+	color: #fff;
+}
+
+aside{
+	background-color: #202020;
+	color: #fff;
+}
+
+footer {
+	background: #783500;
+	color: #fff;
+
+}
