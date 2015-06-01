@@ -9,7 +9,7 @@
   <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-social.css">
 <link rel="stylesheet" href="css/font-awesome.css">
-	<title>Document</title>
+	<title>Iniciar Sesion - Mi Cuenta</title>
 	  <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -22,7 +22,7 @@
 	<header>
 		<div class="container">
 			<div class="col-xs-5 text-center">
-        <a href="index.php"></a><img src="img/imglogo.png" alt="Logo"></a>
+        <img src="img/imglogo.png" alt="Logo">
 			</div>
 			<div class="col-xs-4 text-right">
 				<br>
@@ -30,7 +30,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="index.php">Inicio</a></li>
         <li><a href="ingresar.php">Blog</a></li>
-        <li><a href="main.php?opc=2">Mi Portafolio</a></li>
+        <li><a href="main.php?opc=2">Portafolio</a></li>
         <li><a href="main.php?opc=4">Contacto</a></li>
       </ul>
 </nav>
@@ -52,24 +52,121 @@
 <div class="container-fluid barra">
 	
 	<section class="main row barra">
-				<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-3 barra">
-					<br>
-  <ul class="nav nav-pills nav-stacked text-center"> 
-    <li class="active"><a href="index.php">INICIO</a></li>
-        <li class="active"><a href="main.php?opc=1">BIOGRAFIA</a></li>
-    <li class="active"><a href="main.php?opc=3">CURRICULUM VITAE</a></li>
-    <li class="active"><a href="main.php?opc=2">PORTAFOLIO</a></li>
-    <li class="active"><a href="main.php?opc=4">CONTACTO</a></li>
-  </ul>
-<br><br>
-		</aside>
-			<article class="barra col-xs-12 col-sm-8 col-md-9 col-lg-9">
+ 	
+		<article class="barra col-xs-12">
  <div class="jumbotron">
-  <h1>Hola Desconocido! Yo soy Jose Luis!</h1>
-  <p>Me dedico a eso de la programación! Me destaco trabajando en soporte técnico y en aplicaciones/paginas web. Tengo experiencia en lenguajes como PHP, Python y Javascript entre muchos otros. También soy hábil estructurando y consultando bases de datos.</p>
-  <p align="right"><a href="main.php?opc=1" class="btn btn-primary btn-lg">Seguir Leyendo...</a></p>
+ 	<ul class="breadcrumb">
+  <li><a href="index.php">Inicio</a></li>
+  <li class="active">Ingresar</li>
+</ul>
+<h3 align="center">Debes iniciar sesion para ingresar a nuestro blog.</h3>
+<div class="row" style="margin-top:20px">
+  <?php 
+error_reporting(E_ALL ^ E_NOTICE);
+  switch ($_GET['login']) {
+  	case '1':
+  		?><SCRIPT LANGUAGE="javascript"> 
+      alert("No deje campos Vacios"); 
+      ///location.href = "ingresar.php"; 
+      </SCRIPT><?
+  		break;
+
+  	case '2':
+
+  	require_once('includes/config.php');
+	require_once('includes/conexion.php');
+	
+$dbConn = conectar();
+
+if($_POST['email'] == "" OR $_POST['password'] == ""){
+	 		?><SCRIPT LANGUAGE="javascript"> 
+      alert("No deje campos Vacios"); 
+      location.href = "ingresar.php"; 
+      </SCRIPT><?
+}else{
+
+
+	$emailN= $_POST['email'];
+	$passN= $_POST['password'];
+	$result = mysql_query("SELECT password FROM usuarios WHERE email='".$emailN."'");
+	if($row = mysql_fetch_array($result))
+	{
+	if($row["password"] == $passN)
+	{
+//90 dias dura la cookie
+	setcookie("usEmail",$emailN,time()+7776000);
+	setcookie("usPass",$passN,time()+7776000);
+
+
+?><SCRIPT LANGUAGE='javascript'> 
+      alert("Ingreso exitoso"); 
+      location.href = "blog.php"
+      </SCRIPT>"; 
+      
+<?
+}else{
+	?>
+	<SCRIPT LANGUAGE="javascript"> 
+      alert("Contraseña Incorrecta, intentelo de nuevo."); 
+      location.href = "ingresar.php"; 
+      </SCRIPT> 
+	<?
+}
+  	}else{
+	?>
+	<SCRIPT LANGUAGE="javascript"> 
+      alert("Email Incorrecto, intentelo de nuevo."); 
+      location.href = "ingresar.php"; 
+      </SCRIPT> 
+	<?
+}
+  }
+  		break;
+  	
+  	default:
+  		# code...
+  		break;
+
+}
+
+?>
+
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <form action="ingresar.php?login=2" method="post" role="form">
+      <fieldset>
+        <h2>Ingresa tu cuenta.</h2>
+        <hr class="colorgraph">
+        <div class="form-group">
+                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Correo Electrónico">
+        </div>
+        <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña">
+        </div>
+        <span class="button-checkbox">
+          <button type="button" class="btn" data-color="info">Recuerdame</button>
+                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+          <a href="" class="btn btn-link pull-right">Olvidaste la contraseña?</a>
+        </span>
+        <hr class="colorgraph">
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Ingresar">
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <a href="registro.php" class="btn btn-lg btn-primary btn-block">Registrar</a>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
 </div>
 			</article>
+
+				
+
+
 	</section>
 	<div class="container-fluid barra">
 		<h1></h1>

@@ -1,0 +1,40 @@
+    <!-- Main Menu -->
+    <div class="side-menu-container">
+        <ul class="nav navbar-nav">
+
+            <li><a href="users.php"><span class="glyphicon glyphicon-cloud"></span> Usuarios</a></li>
+            <li class="active"><a href="temas.php"><span class="glyphicon glyphicon-cloud"></span>Temas</a></li>
+
+
+            <li><a href="../blog.php?salir=true"><span class="glyphicon glyphicon-cloud"></span> Cerrar Sesion</a></li>
+
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+    
+    </div>
+		<article class="barra col-xs-10">
+ <div class="jumbotron">
+ 	<ul class="breadcrumb">
+  <li><a href="../index.php">Inicio</a></li>
+  <li class="active">CP</li>
+</ul>
+		<div class="container">
+			<h1>
+				Panel de Administracion - Control de Temas
+			</h1>
+			
+			<table cellpadding="0" cellspacing="0" border="0" class="display" id="blog_posts" width="100%">
+				<thead>
+					<tr>
+						<th>title</th>
+						<th>post</th>
+						<th>postfull</th>
+						<th>authorid</th>
+						<th>datepost</th>
+					</tr>
+				</thead>
+			</table>
+
+		</div>
+			</article>
