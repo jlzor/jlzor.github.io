@@ -9,7 +9,7 @@
   <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap-social.css">
 <link rel="stylesheet" href="css/font-awesome.css">
-	<title>Document</title>
+	<title>Bienvenido a mi Web |  Sitio Oficial </title>
 	  <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
